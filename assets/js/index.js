@@ -32,6 +32,7 @@ const createGridContainer = () => {
             console.log(board.numRemaining)
 
             if (board.isGameOver()) {
+                gridContainer.style.pointerEvents = 'none'
                 alert('Game Over')
             }
         });
@@ -42,6 +43,7 @@ const createGridContainer = () => {
 };
 
 const clickSquare = (event) => {
+
   const row = event.target.dataset.row;
   const col = event.target.dataset.col;
 
@@ -53,6 +55,7 @@ const clickSquare = (event) => {
   } else {
     event.target.style.backgroundColor = "red";
   }
+
 };
 
 const createResetButton = () => {
