@@ -6,4 +6,55 @@ let board = new Board(); // creates a new game board
 // Create the UI of the game using HTML elements based on this grid.
 console.log(board.grid);
 
-// Your code here
+const createGridContainer = () => {
+
+    const gridContainer = document.createElement('div')
+    gridContainer.id = 'container'
+    document.body.appendChild(gridContainer)
+
+    const createSquares = () => {
+
+        for (let i = 0; i < board.grid.length; i++) {
+            let row = board.grid[i]
+            let htmlRow = document.createElement('div')
+            htmlRow.className = 'row'
+            htmlRow.id = i
+            gridContainer.appendChild(htmlRow)
+
+            for (let j = 0; j < row.length; j++) {
+                const square = document.createElement('div')
+                htmlRow.appendChild(square)
+                square.dataset.row = i
+                square.dataset.col = j
+                square.className = 'square'
+
+                square.addEventListener('click', (e) => clickSquare(e))
+
+            }
+        }
+    }
+    createSquares()
+}
+
+const clickSquare = (event) => {
+
+    const row = event.target.dataset.row
+    const col = event.target.dataset.col
+
+    const checkSquare = board.grid[row][col]
+
+    if (checkSquare) {
+        event.target.style.backgroundColor = 'green'
+        event.target.innerText = checkSquare
+
+    } else {
+        event.target.style.backgroundColor = 'red'
+    }
+
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    createGridContainer();
+})

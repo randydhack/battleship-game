@@ -1,1 +1,16 @@
-/* Your code here */
+h1 {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border: 1px solid black;
+    padding: 20px;
+}
